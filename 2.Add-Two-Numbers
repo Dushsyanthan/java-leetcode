@@ -1,0 +1,23 @@
+class Solution{
+public static ListNode list(ListNode n1,ListNode n2) {
+		ListNode a=new ListNode(0);
+		ListNode prev=a;
+		int sum=0,carry=0;
+		while((n1!=null) || (n2!=null) ||(carry!=0)) {
+			sum=carry;
+			if(n1!=null) {
+				sum=sum+n1.val;
+				n1=n1.next;
+			}
+			if(n2!=null) {
+				sum=sum+n2.val;
+				n2=n2.next;
+			}
+			carry=sum/10;
+			sum=sum%10;
+			prev.next=new ListNode(sum);
+			prev=prev.next;
+		}
+		return a.next;
+	}
+}
