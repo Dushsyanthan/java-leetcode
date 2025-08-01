@@ -1,0 +1,26 @@
+class Solution{
+public static int myAtoi(String s) {
+		int ans=0;
+		String q="";
+		s=s.stripTrailing();
+		s=s.stripLeading();
+		int val=1;
+		for(int i=0;i<s.length();i++) {
+			if((s.charAt(i)>=48 && s.charAt(i)<57)) {
+				q=q.concat(s.charAt(i)+"");
+				if(s.charAt(i+1)>57 && s.charAt(i+1)<48 ) 
+				{
+					break;
+				}
+			}
+			else if( s.charAt(i)=='-') {
+				val=-1;
+			}
+			else {
+				break;
+			}
+		}
+		ans=(q.length()>0)?Integer.parseInt(q):0;
+		return ans*val;
+	}
+}
