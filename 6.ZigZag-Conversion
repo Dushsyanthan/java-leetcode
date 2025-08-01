@@ -1,0 +1,20 @@
+class ZigZagString{
+public static String convert(String s, int numRows) {
+	   StringBuilder[] ansSet=new StringBuilder[numRows];
+	   for(int i=0;i<ansSet.length;i++)ansSet[i]=new StringBuilder();
+	   boolean limit=false;
+	   int rows=0;
+	   for(char c:s.toCharArray()) {
+		   ansSet[rows].append(c);
+		   if(rows==0 || rows==numRows-1) {
+			   limit=!limit;
+		   }
+		   rows=rows+(limit?1:-1);
+	   }
+	   StringBuilder ans=new StringBuilder();
+	  for(StringBuilder a:ansSet) {
+		  ans.append(a);
+	  }
+	  return ans.toString();
+	}
+}
