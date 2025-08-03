@@ -1,0 +1,29 @@
+Class Solution {
+    public static boolean isMatch(String s, String p) {
+		
+		if(p.contains(".*")) {
+			return true;
+		}
+		int i=0,q=0;
+		while(i<s.length()) {
+			if(s.charAt(i)==p.charAt(q)) {
+				i++;q++;
+			}
+			else if(s.charAt(i)!=p.charAt(q) && p.charAt(q)=='*'){
+				if(s.charAt(i)==p.charAt(q-1) || p.charAt(q-1)=='.') {
+					i++;q++;
+				}
+				else {
+					return false;
+				}
+			}
+			else if(p.charAt(q)=='.') {
+				q++;i++;
+			}
+			else {
+				return false;
+			}
+		}
+		return true;
+    }
+}
