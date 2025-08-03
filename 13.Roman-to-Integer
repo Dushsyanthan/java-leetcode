@@ -1,0 +1,24 @@
+
+public  class Solution {
+	public static void main(String[] args) {
+		System.out.println(romanToInt("MMMCMLIV"));
+	}
+	public static int romanToInt(String s) {
+		int[] arr =    {1000, 900, 500, 400, 100, 90,  50, 40, 10, 9, 5, 4, 1};
+        String[] roms ={"M",  "CM","D", "CD", "C","XC","L","XL","X","IX","V","IV","I"};
+        Integer aa=0;
+        for(int i=0;i< s.length(); ) {
+        	for(int j=0;j<roms.length;j++) {
+        		String roman=roms[j];
+        		int len=roman.length();
+        		if(s.length()>=i+len && s.substring(i,i+len).equals(roman)) {
+        			aa=aa+arr[j];
+        			s=s.substring(i+len,s.length());
+        			break;
+        		}
+        	}
+        }
+        System.out.println(aa);
+        return aa;
+	 }
+}
