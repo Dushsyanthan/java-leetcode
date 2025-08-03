@@ -1,0 +1,22 @@
+
+public class Solution {
+		
+	public static void main(String[] args) {
+	System.out.println(maxArea(new int[] { 5,5,5,5,5}));
+	
+	}
+	 public static  int maxArea(int[] arr) {
+	      int maxArea=0;
+	      int left=0,right=arr.length-1;
+	      while(left<right) {
+	    	  int width=right-left;
+	    	  int area=width*Math.min(arr[left],arr[right]);
+	    	  maxArea=Math.max(maxArea, area);
+	    	  if(arr[left]<arr[right])left++;
+	    	  else right--;
+	      }
+	      return maxArea;
+	 }
+	
+
+}
