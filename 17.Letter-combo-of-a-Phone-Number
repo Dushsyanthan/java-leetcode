@@ -1,0 +1,67 @@
+class Solution {
+   	public static List<String> letterCombinations(String digits) {
+        if(digits.isBlank()) {
+			return new ArrayList<>();
+		}
+	       HashMap<Character,String> map=new HashMap<>();
+	       map.put('2',"abc");
+	       map.put('3',"def");
+	       map.put('4',"ghi");
+	       map.put('5',"jkl");
+	       map.put('6',"mno");
+	       map.put('7',"pqrs");
+	       map.put('8',"tuv");
+	       map.put('9',"wxyz");
+	       List<String> ans= null;
+	       if(Integer.parseInt(digits)<10) {
+	    	 ans =new ArrayList<>(Arrays.asList(map.get(digits.charAt(0)).split("")));
+	       }
+	       else if(Integer.parseInt(digits)<100 ) {
+	    	   String temp=map.get(digits.charAt(0));
+	    	   ans=new ArrayList<>();
+	    	   for(int i=0;i<temp.length();i++) {
+	    		   String as=map.get(digits.charAt(1));
+	    		   for(int j=0;j<map.get(digits.charAt(1)).length();j++) {
+	    			   ans.add(temp.charAt(i)+""+as.charAt(j));
+	    		   }
+	    	   }
+	       }
+	       else {
+	    	   ans=new ArrayList<>();
+	       }
+	       return ans;
+	}
+}class Solution {
+   	public static List<String> letterCombinations(String digits) {
+        if(digits.isBlank()) {
+			return new ArrayList<>();
+		}
+	       HashMap<Character,String> map=new HashMap<>();
+	       map.put('2',"abc");
+	       map.put('3',"def");
+	       map.put('4',"ghi");
+	       map.put('5',"jkl");
+	       map.put('6',"mno");
+	       map.put('7',"pqrs");
+	       map.put('8',"tuv");
+	       map.put('9',"wxyz");
+	       List<String> ans= null;
+	       if(Integer.parseInt(digits)<10) {
+	    	 ans =new ArrayList<>(Arrays.asList(map.get(digits.charAt(0)).split("")));
+	       }
+	       else if(Integer.parseInt(digits)<100 ) {
+	    	   String temp=map.get(digits.charAt(0));
+	    	   ans=new ArrayList<>();
+	    	   for(int i=0;i<temp.length();i++) {
+	    		   String as=map.get(digits.charAt(1));
+	    		   for(int j=0;j<map.get(digits.charAt(1)).length();j++) {
+	    			   ans.add(temp.charAt(i)+""+as.charAt(j));
+	    		   }
+	    	   }
+	       }
+	       else {
+	    	   ans=new ArrayList<>();
+	       }
+	       return ans;
+	}
+}
