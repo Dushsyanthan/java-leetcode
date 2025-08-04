@@ -1,0 +1,27 @@
+class Solution {
+  public static List<List<Integer>> threeSum(int[] arr) {
+		ArrayList<List<Integer>>  a=new ArrayList<>();
+		for(int i=0;i<arr.length-2;i++) {
+			for(int j=i+1;j<arr.length;j++) {
+				for(int k=j+1;k<arr.length;k++) {
+					if(arr[i]+arr[j]+arr[k]==0) {
+						Integer[] check=new Integer[]{arr[i],arr[j],arr[k]};
+						if(dup(check,a)) {
+							a.add(Arrays.asList(check));
+						}
+					}
+				}
+			}
+		}
+        return a;
+    }
+	public static boolean dup(Integer arr[],ArrayList<List<Integer>> a) {
+		for(List<Integer> s:a) {
+			if(s.contains(arr[0]) && s.contains(arr[1]) && s.contains(arr[2])) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+}
