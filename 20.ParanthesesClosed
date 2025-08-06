@@ -1,0 +1,19 @@
+class Solution{
+public static boolean isValid(String s) {
+		Stack<Character> ans=new Stack<>();
+		for(char c:s.toCharArray()) {
+			if(c=='(' || c=='[' || c=='{') {
+				ans.add(c);
+			}
+			else {
+				char cur=ans.pop();
+				if((cur=='(' && c!=')')||
+					(cur=='[' && c !=']')||
+					(cur=='{' && c !='}')) {
+					return false;
+				}
+			}
+		}
+		return ans.isEmpty();
+	}
+}
