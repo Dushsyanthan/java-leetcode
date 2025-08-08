@@ -1,5 +1,6 @@
-class Solution{
-  public static  List<List<Integer>> fourSum(int[] nums, int target) {
+class Solution {
+	public static  List<List<Integer>> fourSum(int[] nums, int target) {
+            Long t=(long)target;
 	        Arrays.sort(nums);
 	        Set<List<Integer>> an=new HashSet<>();
 	        int n=nums.length;
@@ -7,14 +8,12 @@ class Solution{
 	            for (int j = i + 1; j < n - 2; j++) {
 	                int left = j + 1;
 	                int right = n - 1;
-	     
 	        while(left<right) {
-	        	int tempNum=nums[left]+nums[i]+nums[j]+nums[right];
-	        	if(tempNum==target) {
-	        		List<Integer> temp=Arrays.asList(new Integer[] {nums[left],nums[j],nums[i],nums[right]});
+	            Long tempNum=(long)nums[left]+nums[i]+nums[j]+nums[right];
+	        	if(tempNum.equals(t)) {
+	        		List<Integer> temp=Arrays.asList(new Integer[] {nums[left],nums[i],nums[j],nums[right]});
 	        			an.add(temp);
-	        		left++;
-	        		right--;
+                    left++;right--;
 				}
 	        	else if(tempNum<target) {
 	        		left++;
@@ -25,7 +24,7 @@ class Solution{
 	        	}
             }
         }
+	        
 	        return new ArrayList<>(an);
 	}
-
 }
