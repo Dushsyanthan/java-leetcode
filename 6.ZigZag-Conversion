@@ -1,5 +1,6 @@
-class ZigZagString{
-public static String convert(String s, int numRows) {
+class Solution {
+   public static String convert(String s, int numRows) {
+        if(numRows==1)return s;
 	   StringBuilder[] ansSet=new StringBuilder[numRows];
 	   for(int i=0;i<ansSet.length;i++)ansSet[i]=new StringBuilder();
 	   boolean limit=false;
@@ -9,7 +10,7 @@ public static String convert(String s, int numRows) {
 		   if(rows==0 || rows==numRows-1) {
 			   limit=!limit;
 		   }
-		   rows=rows+(limit?1:-1);
+		   rows+=limit?1:-1;
 	   }
 	   StringBuilder ans=new StringBuilder();
 	  for(StringBuilder a:ansSet) {
