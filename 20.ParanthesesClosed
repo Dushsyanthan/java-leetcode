@@ -1,11 +1,13 @@
-class Solution{
-public static boolean isValid(String s) {
+class Solution {
+   public static boolean isValid(String s) {
 		Stack<Character> ans=new Stack<>();
+        if(s.length()%2!=0)return false;
 		for(char c:s.toCharArray()) {
 			if(c=='(' || c=='[' || c=='{') {
 				ans.add(c);
 			}
 			else {
+                if(ans.isEmpty())return false;
 				char cur=ans.pop();
 				if((cur=='(' && c!=')')||
 					(cur=='[' && c !=']')||
