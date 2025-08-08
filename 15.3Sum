@@ -1,27 +1,35 @@
 class Solution {
-  public static List<List<Integer>> threeSum(int[] arr) {
-		ArrayList<List<Integer>>  a=new ArrayList<>();
-		for(int i=0;i<arr.length-2;i++) {
-			for(int j=i+1;j<arr.length;j++) {
-				for(int k=j+1;k<arr.length;k++) {
-					if(arr[i]+arr[j]+arr[k]==0) {
-						Integer[] check=new Integer[]{arr[i],arr[j],arr[k]};
-						if(dup(check,a)) {
-							a.add(Arrays.asList(check));
-						}
-					}
-				}
-			}
-		}
-        return a;
-    }
-	public static boolean dup(Integer arr[],ArrayList<List<Integer>> a) {
-		for(List<Integer> s:a) {
-			if(s.contains(arr[0]) && s.contains(arr[1]) && s.contains(arr[2])) {
-				return false;
-			}
-		}
-		return true;
-	}
+    public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Set<String> seen = new HashSet<>();
 
+        Arrays.sort(nums); // Sort once
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            int left = i + 1, right = nums.length - 1;
+
+            while (left < right) {
+                int sum = nums[i] + nums[left] + nums[right];
+
+                if (sum == 0) {
+                    List<Integer> triplet = Arrays.asList(nums[i], nums[left], nums[right]);
+                    String key = triplet.toString(); // Use string key to avoid duplicates
+
+                    if (!seen.contains(key)) {
+                        result.add(triplet);
+                        seen.add(key);
+                    }
+
+                    left++;
+                    right--;
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    right--;
+                }
+            }
+        }
+
+        return result;
+    }
 }
