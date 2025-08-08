@@ -1,6 +1,6 @@
 class Solution {
-   	public static List<String> letterCombinations(String digits) {
-        if(digits.isBlank()) {
+   		public static List<String> letterCombinations(String digits) {
+		if(digits.isBlank()) {
 			return new ArrayList<>();
 		}
 	       HashMap<Character,String> map=new HashMap<>();
@@ -12,55 +12,46 @@ class Solution {
 	       map.put('7',"pqrs");
 	       map.put('8',"tuv");
 	       map.put('9',"wxyz");
-	       List<String> ans= null;
-	       if(Integer.parseInt(digits)<10) {
+	       List<String> ans=new ArrayList<>();
+	       if(digits.length()==1) {
 	    	 ans =new ArrayList<>(Arrays.asList(map.get(digits.charAt(0)).split("")));
 	       }
-	       else if(Integer.parseInt(digits)<100 ) {
-	    	   String temp=map.get(digits.charAt(0));
-	    	   ans=new ArrayList<>();
-	    	   for(int i=0;i<temp.length();i++) {
-	    		   String as=map.get(digits.charAt(1));
-	    		   for(int j=0;j<map.get(digits.charAt(1)).length();j++) {
-	    			   ans.add(temp.charAt(i)+""+as.charAt(j));
+	       else if(digits.length()==2 ) {
+	    	   String temp1=map.get(digits.charAt(0));
+	    	   String temp2=map.get(digits.charAt(1));
+	    	   for(int i=0;i<temp1.length();i++) {
+	    		   for(int j=0;j<temp2.length();j++) {
+	    			   ans.add(temp1.charAt(i)+""+temp2.charAt(j));
 	    		   }
 	    	   }
 	       }
-	       else {
-	    	   ans=new ArrayList<>();
-	       }
-	       return ans;
-	}
-}class Solution {
-   	public static List<String> letterCombinations(String digits) {
-        if(digits.isBlank()) {
-			return new ArrayList<>();
-		}
-	       HashMap<Character,String> map=new HashMap<>();
-	       map.put('2',"abc");
-	       map.put('3',"def");
-	       map.put('4',"ghi");
-	       map.put('5',"jkl");
-	       map.put('6',"mno");
-	       map.put('7',"pqrs");
-	       map.put('8',"tuv");
-	       map.put('9',"wxyz");
-	       List<String> ans= null;
-	       if(Integer.parseInt(digits)<10) {
-	    	 ans =new ArrayList<>(Arrays.asList(map.get(digits.charAt(0)).split("")));
-	       }
-	       else if(Integer.parseInt(digits)<100 ) {
-	    	   String temp=map.get(digits.charAt(0));
-	    	   ans=new ArrayList<>();
-	    	   for(int i=0;i<temp.length();i++) {
-	    		   String as=map.get(digits.charAt(1));
-	    		   for(int j=0;j<map.get(digits.charAt(1)).length();j++) {
-	    			   ans.add(temp.charAt(i)+""+as.charAt(j));
-	    		   }
+	       else if(digits.length()==3){
+	    	   String temp1=map.get(digits.charAt(0));
+	    	   String temp2=map.get(digits.charAt(1));
+	    	   String temp3=map.get(digits.charAt(2));
+	    	   for(char a:temp1.toCharArray()) {
+	    		   for(char b:temp2.toCharArray()) {
+	    			   for(char c:temp3.toCharArray()) {
+	    	    		   ans.add(a+""+b+""+c);
+	    	    	   }
+		    	   }
 	    	   }
 	       }
-	       else {
-	    	   ans=new ArrayList<>();
+	       else if(digits.length()==4) {
+	    	   String temp1=map.get(digits.charAt(0));
+	    	   String temp2=map.get(digits.charAt(1));
+	    	   String temp3=map.get(digits.charAt(2));
+	    	   String temp4=map.get(digits.charAt(3));
+	    	   for(char a:temp1.toCharArray()) {
+	    		   for(char b:temp2.toCharArray()) {
+	    			   for(char c:temp3.toCharArray()) {
+	    			   		for(char d:temp4.toCharArray()) {
+	    			   			ans.add(a+""+b+""+c+""+d);
+	    			   		}
+	    	   			}
+		    	   }
+	    	   }
+	    	   
 	       }
 	       return ans;
 	}
