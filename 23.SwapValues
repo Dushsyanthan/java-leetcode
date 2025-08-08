@@ -1,28 +1,20 @@
-class Solution{
-public static ListNode swapPairs(ListNode head) {
+
+class Solution {
+   public static ListNode mergeKLists(ListNode[] lists) {
+        ArrayList<Integer> vals=new ArrayList<>();
         ListNode ans=new ListNode();
         ListNode out=ans;
-        ArrayList<Integer>  val=new ArrayList<>();
-        while(head!=null) {
-        	val.add(head.val);
-        	head=head.next;
-        }
-        int two=1;
-        int one=0;
-        int q=0;
-        for(int i=0;i<val.size()/2;i++) {
-        	out.next=new ListNode(val.get(two));
-        	out.next.next=new ListNode(val.get(one));
-        	out=out.next.next;
-        	one=one+2;
-        	two=two+2;
-        	q=q+2;
-        }
-        while(q<val.size()) {
-        	out.next=new ListNode(val.get(q++));
-        	out=out.next;
-        }
-        return ans.next;
-    }
-
+	    for(ListNode a:lists) {
+	    	while(a!=null) {
+	    		vals.add(a.val);
+	    		a=a.next;
+	    	}
+	    }   
+	    Collections.sort(vals);
+	    for(Integer b:vals) {
+	    	out.next=new ListNode(b);
+	    	out=out.next;
+	    }
+	    return ans.next;
+	}
 }
