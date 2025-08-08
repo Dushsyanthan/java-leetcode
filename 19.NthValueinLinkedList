@@ -1,5 +1,5 @@
-class Solution{
-public static ListNode removeNthFromEnd(ListNode head, int n) {
+class Solution {
+   	public static ListNode removeNthFromEnd(ListNode head, int n) {
 	        ListNode ans=new ListNode();
 	        ListNode out=ans;
 	        int len=0;
@@ -11,12 +11,15 @@ public static ListNode removeNthFromEnd(ListNode head, int n) {
 	        head=temp;
 	        int count=len-n;
 	        len=0;
-	      //  System.out.println(count+" "+len);
+	        System.out.println(count+" "+len);
 	        while(head!=null) {
-	        	if(len!=count) {
-	        		out.next=new ListNode(head.val);
-		        	out=out.next;
+	        	if(len==count) {
+	        		head=head.next;
+	        		len=-100;
+	        		continue;
 	        	}
+	        	out.next=new ListNode(head.val);
+	        	out=out.next;
 	        	head=head.next;
 	        	len++;
 	        }
