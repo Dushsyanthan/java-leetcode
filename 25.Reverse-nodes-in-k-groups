@@ -1,0 +1,46 @@
+
+class Solution {
+         public static ListNode reverseKGroup(ListNode head, int k) {
+    	ListNode ans=new ListNode();
+    	ListNode dum=ans;
+    	ArrayList<Integer> loop=new ArrayList<>();
+    	while(head!=null) {
+    		loop.add(head.val);
+    		head=head.next;
+    	}
+    	int times=0;
+    	if(k==1) {
+    		loop.reversed();
+    		for(int i=0;i<loop.size();i++) {
+    			dum.next=new ListNode(loop.get(i));
+    			dum=dum.next;
+    		}
+    		return ans.next;
+    	}
+    	else if(loop.size()/k<1) {
+    		for(int i=0;i<loop.size();i++) {
+    			dum.next=new ListNode(loop.get(i));
+    			dum=dum.next;
+    		}
+    		return ans.next;
+    	}
+    	else times=loop.size()/k;
+    	int n=0;
+    	int t=k;
+    	//System.out.println(times);
+    	for(int i=0;i<times;i++) {
+    		for(int j=t-1;j>=n && n<loop.size();j--) {
+    			//System.out.println(j);
+    			dum.next=new ListNode(loop.get(j));
+    			dum=dum.next;
+    		}
+    		n=t;
+    		t=t+k;
+    	}
+    	for(int i=n;i<loop.size();i++) {
+    		dum.next=new ListNode(loop.get(i));
+			dum=dum.next;
+    	}
+        return ans.next;
+    }
+}
