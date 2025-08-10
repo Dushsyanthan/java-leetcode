@@ -24,4 +24,5 @@ public static String longestPalindrome(String s) {
 		}
 		return true;
 	}
+
 }
