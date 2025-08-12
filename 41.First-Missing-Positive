@@ -1,0 +1,22 @@
+class Solution {
+   public static int firstMissingPositive(int[] nums) {
+        Arrays.sort(nums);
+	    LinkedHashSet<Integer> positive=new LinkedHashSet<>();
+        boolean zero=false;
+		for(int val:nums) {
+			if(val>0)positive.add(val);
+            if(val<=0)zero=true;
+		}
+        if(positive.isEmpty() && zero) return 1;
+		if(positive.isEmpty()) return 0;
+		if(positive.getFirst()!=1)return 1;
+		Integer prev=null;
+		for(Integer val:positive) {
+			if(prev!=null && val-prev>1 ) {
+				return prev+1;
+			}
+			prev=val;
+		}
+		return positive.getLast()+1;
+	}
+}
